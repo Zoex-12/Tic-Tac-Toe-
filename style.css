@@ -1,0 +1,46 @@
+/* Styles for the playground */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: #313131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapper #head {
+  font-size: 50px;
+  margin-bottom: 20px;
+  border: 6px solid rgb(236, 236, 236);
+  padding: 10px;
+}
+
+.wrapper .playGround {
+  /* padding: 20px; */
+  border: 7px solid rgb(235, 222, 222);
+  height: 410px;
+  width: 410px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wrapper .playGround > .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 40px;
+  border: 1px solid white;
+  width: 133px;
+  height: 133px;
+  cursor: pointer;
+}
