@@ -1,8 +1,14 @@
 // JavaScript for TicTac Toe game
+const wrapper = document.querySelector(".wrapper");
 
 const boxes = document.querySelectorAll(".item");
 const head = document.getElementById("head");
 const ticTac = document.querySelector(".playGround");
+const button = document.querySelector(".button");
+const restart = document.querySelector(".rstbtn");
+let draw = 0;
+
+const counter = document.querySelector(".counter");
 
 document.body.style.color = "white";
 
@@ -16,18 +22,36 @@ let winConditions = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
+wrapper.replaceChild(button, restart);
 let currentPlayer = "X";
 
 function StartGame(e) {
   if (e.target.innerText === "") {
     e.target.innerText = currentPlayer;
+    draw++;
     winner();
 
     currentPlayer = currentPlayer === "X" ? "O" : "X";
   }
+  if (draw === 9) {
+    head.innerText = "Draw";
+  }
 }
-ticTac.addEventListener("click", StartGame);
+
+let count = 6;
+
+button.addEventListener("click", () => {
+  let timer = setInterval(() => {
+    counter.innerText = `Your game starts in ${--count}`;
+    if (count === 0) {
+      clearInterval(timer);
+      counter.innerText = "";
+      count = 6;
+      ticTac.addEventListener("click", StartGame);
+      wrapper.replaceChild(restart, button);
+    }
+  }, 1000);
+});
 
 function winner() {
   winConditions.forEach((item) => {
@@ -41,9 +65,19 @@ function winner() {
 
     if (value0 !== "" && value1 !== "" && value2 !== "") {
       if (value0 === value1 && value1 === value2) {
+        draw = 0;
         head.innerText = `winner is ${value0}`;
         ticTac.removeEventListener("click", StartGame);
       }
     }
   });
 }
+restart.addEventListener("dblclick", () => {
+  currentPlayer = "X";
+  boxes.forEach((item) => {
+    item.innerText = "";
+    head.innerText = "Tic Tac Toe";
+  });
+  wrapper.replaceChild(button, restart);
+  ticTac.removeEventListener("click", StartGame);
+});

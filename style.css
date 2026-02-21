@@ -44,3 +44,29 @@
   height: 133px;
   cursor: pointer;
 }
+.wrapper .button {
+  margin-top: 20px;
+  padding: 9px 15px;
+  width: 180px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+.wrapper .button:hover {
+  transform: scale(0.9);
+}
+.wrapper .counter {
+  color: aqua;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.wrapper .rstbtn {
+  margin-top: 20px;
+  padding: 9px 15px;
+  width: 180px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+}
